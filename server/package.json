@@ -1,0 +1,22 @@
+{
+  "name": "devcamper_api",
+  "version": "1.0.0",
+  "description": "Devcamper backend API",
+  "main": "server.js",
+  "scripts": {
+    "start": "SET NODE_ENV=production&& node server",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Guilherme G Silva",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
