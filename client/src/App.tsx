@@ -1,20 +1,29 @@
+import { instance } from '@api/http-common';
 import { useEffect, useState } from 'react';
 
-const baseURL = 'http://localhost:5000/api/v1';
-
 export default function App() {
+  const [users, usersSet] = useState([]);
+
   useEffect(() => {
-    fetch(`${baseURL}/users`)
-      .then((res) => res.json())
-      .then((data) => console.log(data))
+    instance
+      .get('/users')
+      .then((response) => usersSet(response.data.users))
       .catch((error) => error)
       .finally(() => {});
     return () => {};
   }, []);
 
-  return <UsersList />;
+  return <UsersList users={users} />;
 }
 
-function UsersList() {
-  return null;
+function UsersList({ users }: { users: { id: number; name: string }[] }) {
+  return (
+    <div className='h-screen bg-indigo-500 text-indigo-100'>
+      <ul>
+        {users.map((user) => (
+          <li key={user.id}>{user.name}</li>
+        ))}
+      </ul>
+    </div>
+  );
 }
