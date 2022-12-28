@@ -1,5 +1,5 @@
 const pagination = (req, res, next) => {
-  console.log('pagination');
+  // console.log('pagination');
   next();
 };
 

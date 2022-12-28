@@ -1,1 +1,1 @@
-{ "tabWidth": 2, "singleQuote": true, "jsxSingleQuote": true }
+{ "tabWidth": 2, "singleQuote": true, "singleAttributePerLine": true }

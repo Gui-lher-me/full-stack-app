@@ -5,7 +5,7 @@ const token = Cookies.get('access_token');
 
 export const instance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
-  timeout: 1000,
+  // timeout: 1000,
   headers: {
     Authorization: `Bearer ${token}`,
     'Content-Type': 'application/json',

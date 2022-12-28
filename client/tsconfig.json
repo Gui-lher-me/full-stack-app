@@ -18,8 +18,14 @@
     "baseUrl": "src",
     "paths": {
       "@api/*": ["./api/*"],
+      "@auth/*": ["./auth/*"],
       "@components/*": ["./components/*"],
+      "@constants/*": ["./constants/*"],
+      "@context/*": ["./context/*"],
       "@hooks/*": ["./hooks/*"],
+      "@pages/*": ["./pages/*"],
+      "@theme/*": ["./theme/*"],
+      "@types/*": ["./types/*"],
       "@utils/*": ["./utils/*"]
     }
   },
