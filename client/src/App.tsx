@@ -32,6 +32,11 @@ export default function App() {
               element={<Home />}
             />
           </Route>
+
+          <Route
+            path="*"
+            element={<div>Not Found</div>}
+          />
         </Routes>
       </React.Suspense>
     </ErrorBoundary>
