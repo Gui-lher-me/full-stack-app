@@ -1,38 +1,39 @@
-import { instance } from '@api/http-common';
-import { useEffect, useState } from 'react';
-import { v4 } from 'uuid';
+import Login from '@auth/pages/Login';
+import Signup from '@auth/pages/Signup';
+import { PrivateRoute } from '@auth/PrivateRoute';
+import ErrorBoundary from '@components/ErrorBoundary';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-type User = { name: string; email: string; phone: string };
-
-type Data = { users: User[] };
+// pages
+const Home = React.lazy(() => import('@pages/Home'));
 
 export default function App() {
-  const [users, usersSet] = useState([] as User[]);
-
-  useEffect(() => {
-    instance
-      .get<Data>('/users')
-      .then((response) => usersSet(response.data.users))
-      .catch((error) => error)
-      .finally(() => {});
-    return () => {};
-  }, []);
-
-  return <UserList users={users} />;
-}
-
-interface IUserList extends Data {}
-
-function UserList({ users }: IUserList) {
-  const newUsers = users.map((user) => ({ ...user, id: v4() }));
-
   return (
-    <div className='h-screen bg-indigo-500 text-indigo-100'>
-      <ul>
-        {newUsers.map((user) => {
-          return <li key={user.id}>{user.name}</li>;
-        })}
-      </ul>
-    </div>
+    <ErrorBoundary>
+      <React.Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route
+            path="login"
+            element={<Login />}
+          />
+
+          <Route
+            path="signup"
+            element={<Signup />}
+          />
+
+          <Route
+            path="/"
+            element={<PrivateRoute />}
+          >
+            <Route
+              path="home"
+              element={<Home />}
+            />
+          </Route>
+        </Routes>
+      </React.Suspense>
+    </ErrorBoundary>
   );
 }

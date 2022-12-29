@@ -1,3 +1,3 @@
 export function Form() {
-  return null;
+  return <div>Form</div>;
 }
