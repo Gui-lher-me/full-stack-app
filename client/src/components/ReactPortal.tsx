@@ -1,17 +1,16 @@
-import { ReactNode, useLayoutEffect, useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
 interface Props {
-  children: ReactNode;
+  children: React.ReactNode;
   wrapperId: string;
 }
 
 export function ReactPortal({ children, wrapperId }: Props) {
-  const [wrapperElement, wrapperElementSet] = useState<HTMLDivElement | null>(
-    null
-  );
+  const [wrapperElement, wrapperElementSet] =
+    React.useState<HTMLDivElement | null>(null);
 
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     let element = document.getElementById(wrapperId) as HTMLDivElement;
     let systemCreated = false;
     // if element is not found with wrapperId or wrapperId is not provided,

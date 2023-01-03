@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import React from 'react';
 
 export function useLocalStorage<T>(key: string, initialValue: T) {
-  const [storedValue, setStoredValue] = useState<T>(() => {
+  const [storedValue, setStoredValue] = React.useState<T>(() => {
     if (typeof window === 'undefined') {
       return initialValue;
     }
