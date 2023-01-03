@@ -1,5 +1,7 @@
-import { Form } from '@components/Form';
+import { Form as LoginForm } from '@components/Form';
 import React from 'react';
+
+type Event = React.ChangeEvent<HTMLInputElement>;
 
 export default function Login() {
   const [email, emailSet] = React.useState('');
@@ -8,15 +10,13 @@ export default function Login() {
   const fields = [
     {
       value: email,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-        emailSet(e.target.value),
+      onChange: (e: Event) => emailSet(e.target.value),
       id: 'email',
       label: 'Email',
     },
     {
       value: password,
-      onChange: (e: React.ChangeEvent<HTMLInputElement>) =>
-        passwordSet(e.target.value),
+      onChange: (e: Event) => passwordSet(e.target.value),
       id: 'password',
       label: 'Password',
     },
@@ -34,7 +34,7 @@ export default function Login() {
   };
 
   return (
-    <Form
+    <LoginForm
       submit={submit}
       fields={fields}
     />
