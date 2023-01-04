@@ -6,6 +6,7 @@ type Field = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   id: string;
   label: string;
+  type: string;
 };
 
 interface Props {
@@ -28,6 +29,7 @@ export function Form(props: Props) {
           onChange={field.onChange}
           id={field.id}
           label={field.label}
+          type={field.type}
         />
       ))}
       <button>Submit</button>

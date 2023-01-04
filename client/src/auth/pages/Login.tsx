@@ -13,12 +13,14 @@ export default function Login() {
       onChange: (e: Event) => emailSet(e.target.value),
       id: 'email',
       label: 'Email',
+      type: 'email',
     },
     {
       value: password,
       onChange: (e: Event) => passwordSet(e.target.value),
       id: 'password',
       label: 'Password',
+      type: 'password',
     },
   ];
 
